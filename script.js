@@ -149,18 +149,12 @@ function edit(id) {
 				student["grade"] = input_3.value;
 				student["age"] = input_4.value;
 				student["degree"] = input_5.value;
-
-				input_1.value = "";
-				input_2.value = "";
-				input_3.value = "";
-				input_4.value = "";
-				input_5.value = "";
 				document.getElementById("button").innerText = "Add Student";
 			};
 		}
 	});
 	// renderData(students);
-	console.log(students);
+	// console.log(students);
 }
 
 // delete the student
