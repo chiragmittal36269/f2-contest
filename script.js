@@ -1,5 +1,3 @@
-console.log("hello world!");
-
 let students = [
 	{
 		ID: 1,
@@ -53,7 +51,6 @@ renderData = (students) => {
                     </td>
             `;
 		tbody.appendChild(tr);
-		console.log(students[i]["ID"]);
 	}
 };
 
@@ -163,10 +160,11 @@ function edit(id) {
 				input_4.value = "";
 				input_5.value = "";
 				document.getElementById("button").innerText = "Add Student";
+				renderData(student);
 			};
 		}
 	});
-	renderData(students);
+	// renderData(students);
 }
 
 // delete the student
