@@ -41,8 +41,8 @@ renderData = (students) => {
                     <td>
                         ${students[i].degree}
                         <span>
-                            <button class="editors edit" id="button-${id}">
-                                <img onclick="edit(${students[i]["ID"]})" src="./edit 1.svg" alt="" />
+                            <button class="editors edit" id="button-${id}" onclick="edit(${students[i]["ID"]})">
+                                <img src="./edit 1.svg" alt="" />
                             </button>
                             <button class="editors delete" id="button-${id}" onclick="del(${students[i]["ID"]})">
                                 <img src="./trash-2 1.svg" alt="" />
@@ -134,7 +134,7 @@ inputTag.addEventListener("keyup", (event) => {
 // Edit Button
 
 function edit(id) {
-	students.forEach((student) => {
+	students.forEach((student, index) => {
 		if (student["ID"] == id) {
 			input_1.value = student["name"];
 			input_2.value = student["email"];
