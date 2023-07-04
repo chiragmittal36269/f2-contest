@@ -44,8 +44,8 @@ renderData = (students) => {
                             <button class="editors edit" id="button-${id}">
                                 <img onclick="edit(${students[i]["ID"]})" src="./edit 1.svg" alt="" />
                             </button>
-                            <button class="editors delete" id="button-${id}">
-                                <img onclick="del(${students[i]["ID"]})" src="./trash-2 1.svg" alt="" />
+                            <button class="editors delete" id="button-${id}" onclick="del(${students[i]["ID"]})">
+                                <img src="./trash-2 1.svg" alt="" />
                             </button>
                         </span>
                     </td>
@@ -96,8 +96,6 @@ add.addEventListener("click", (e) => {
 		students.push(obj);
 	}
 
-	console.log(students);
-
 	tbody.innerHTML = ``;
 	renderData(students);
 
@@ -107,8 +105,6 @@ add.addEventListener("click", (e) => {
 	input_4.value = "";
 	input_5.value = "";
 });
-
-console.log(students);
 
 //search for students
 
@@ -160,11 +156,11 @@ function edit(id) {
 				input_4.value = "";
 				input_5.value = "";
 				document.getElementById("button").innerText = "Add Student";
-				renderData(student);
 			};
 		}
 	});
 	// renderData(students);
+	console.log(students);
 }
 
 // delete the student
