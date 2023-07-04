@@ -140,96 +140,6 @@ inputTag.addEventListener("keyup", (event) => {
 
 // Edit Button
 
-// const button_1 = document.querySelectorAll("button.editors");
-
-// console.log(button_1);
-
-// for (let i = 0; i < button_1.length; i++) {
-// 	button_1[i].addEventListener("click", (e) => {
-// 		e.preventDefault();
-// 		console.log(e);
-// 	});
-// }
-
-// const buttons = document.getElementsByClassName("edit");
-
-// for (let i = 0; i < buttons.length; i++) {
-// 	buttons[i].addEventListener("click", function () {
-// 		// console.log("Button clicked:", this.id, this.classList[1]);
-// 		// const id = this.id;
-// 		// const value = this.classList[1];
-// 		// console.log(students);
-// 		// console.log(id);
-// 		input_1.value = students[i].name;
-// 		input_2.value = students[i].email;
-// 		input_3.value = students[i].grade;
-// 		input_4.value = students[i].age;
-// 		input_5.value = students[i].degree;
-
-// 		let button = document.getElementById("button");
-// 		button.innerHTML = `Edit Student`;
-
-// 		button.addEventListener("click", function () {
-// 			students[i].name = input_1.value;
-// 			students[i].email = input_2.value;
-// 			students[i].grade = input_3.value;
-// 			students[i].age = input_4.value;
-// 			students[i].degree = input_5.value;
-// 			tbody.innerHTML = "";
-// 			renderData(students);
-
-// 			input_1.value = "";
-// 			input_2.value = "";
-// 			input_3.value = "";
-// 			input_4.value = "";
-// 			input_5.value = "";
-// 			button.innerHTML = `Add Student`;
-// 		});
-
-// const id = i + 1;
-// const name = input_1.value;
-// const email = input_2.value;
-// const gpa = input_3.value;
-// const age = input_4.value;
-// const degree = input_5.value;
-
-// let obj = {
-// 	ID: id,
-// 	name: name,
-// 	email: email,
-// 	grade: gpa,
-// 	age: age,
-// 	degree: degree,
-// };
-
-// console.log(students);
-
-// tbody.innerHTML = ``;
-// renderData(students);
-
-// input_1.value = "";
-// input_2.value = "";
-// input_3.value = "";
-// input_4.value = "";
-// input_5.value = "";
-// 	});
-// }
-
-// const deleteButton = document.getElementsByClassName("delete");
-
-// students.forEach((element, i) => {
-// 	deleteButton[i].addEventListener("click", function () {
-// 		students.splice(i, 1);
-// 		renderData(students);
-// 	});
-// });
-// for (const i of deleteButton) {
-// 	deleteButton[i].addEventListener("click", function () {
-// 		students.splice(i, 1);
-// 		renderData(students);
-// 	});
-// }
-
 function edit(id) {
 	students.forEach((student) => {
 		if (student["ID"] == id) {
@@ -258,6 +168,8 @@ function edit(id) {
 	});
 	renderData(students);
 }
+
+// delete the student
 
 function del(id) {
 	students.forEach((student, index) => {
