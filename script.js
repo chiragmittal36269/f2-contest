@@ -44,15 +44,16 @@ renderData = (students) => {
                         ${students[i].degree}
                         <span>
                             <button class="editors edit" id="button-${id}">
-                                <img src="./edit 1.svg" alt="" />
+                                <img onclick="edit(${students[i]["ID"]})" src="./edit 1.svg" alt="" />
                             </button>
                             <button class="editors delete" id="button-${id}">
-                                <img src="./trash-2 1.svg" alt="" />
+                                <img onclick="del(${students[i]["ID"]})" src="./trash-2 1.svg" alt="" />
                             </button>
                         </span>
                     </td>
             `;
 		tbody.appendChild(tr);
+		console.log(students[i]["ID"]);
 	}
 };
 
@@ -150,49 +151,69 @@ inputTag.addEventListener("keyup", (event) => {
 // 	});
 // }
 
-const buttons = document.getElementsByClassName("edit");
+// const buttons = document.getElementsByClassName("edit");
 
-for (let i = 0; i < buttons.length; i++) {
-	buttons[i].addEventListener("click", function () {
-		// console.log("Button clicked:", this.id, this.classList[1]);
-		// const id = this.id;
-		// const value = this.classList[1];
-		// console.log(students);
-		// console.log(id);
-		input_1.value = students[i].name;
-		input_2.value = students[i].email;
-		input_3.value = students[i].grade;
-		input_4.value = students[i].age;
-		input_5.value = students[i].degree;
+// for (let i = 0; i < buttons.length; i++) {
+// 	buttons[i].addEventListener("click", function () {
+// 		// console.log("Button clicked:", this.id, this.classList[1]);
+// 		// const id = this.id;
+// 		// const value = this.classList[1];
+// 		// console.log(students);
+// 		// console.log(id);
+// 		input_1.value = students[i].name;
+// 		input_2.value = students[i].email;
+// 		input_3.value = students[i].grade;
+// 		input_4.value = students[i].age;
+// 		input_5.value = students[i].degree;
 
-		const id = i + 1;
-		const name = input_1.value;
-		const email = input_2.value;
-		const gpa = input_3.value;
-		const age = input_4.value;
-		const degree = input_5.value;
+// 		let button = document.getElementById("button");
+// 		button.innerHTML = `Edit Student`;
 
-		let obj = {
-			ID: id,
-			name: name,
-			email: email,
-			grade: gpa,
-			age: age,
-			degree: degree,
-		};
+// 		button.addEventListener("click", function () {
+// 			students[i].name = input_1.value;
+// 			students[i].email = input_2.value;
+// 			students[i].grade = input_3.value;
+// 			students[i].age = input_4.value;
+// 			students[i].degree = input_5.value;
+// 			tbody.innerHTML = "";
+// 			renderData(students);
 
-		console.log(students);
+// 			input_1.value = "";
+// 			input_2.value = "";
+// 			input_3.value = "";
+// 			input_4.value = "";
+// 			input_5.value = "";
+// 			button.innerHTML = `Add Student`;
+// 		});
 
-		tbody.innerHTML = ``;
-		renderData(students);
+// const id = i + 1;
+// const name = input_1.value;
+// const email = input_2.value;
+// const gpa = input_3.value;
+// const age = input_4.value;
+// const degree = input_5.value;
 
-		// input_1.value = "";
-		// input_2.value = "";
-		// input_3.value = "";
-		// input_4.value = "";
-		// input_5.value = "";
-	});
-}
+// let obj = {
+// 	ID: id,
+// 	name: name,
+// 	email: email,
+// 	grade: gpa,
+// 	age: age,
+// 	degree: degree,
+// };
+
+// console.log(students);
+
+// tbody.innerHTML = ``;
+// renderData(students);
+
+// input_1.value = "";
+// input_2.value = "";
+// input_3.value = "";
+// input_4.value = "";
+// input_5.value = "";
+// 	});
+// }
 
 // const deleteButton = document.getElementsByClassName("delete");
 
@@ -208,3 +229,42 @@ for (let i = 0; i < buttons.length; i++) {
 // 		renderData(students);
 // 	});
 // }
+
+function edit(id) {
+	students.forEach((student) => {
+		if (student["ID"] == id) {
+			input_1.value = student["name"];
+			input_2.value = student["email"];
+			input_3.value = student["grade"];
+			input_4.value = student["age"];
+			input_5.value = student["degree"];
+			document.getElementById("button").innerText = "Edit Student";
+
+			document.getElementById("button").onclick = function jsFunc() {
+				student["name"] = input_1.value;
+				student["email"] = input_2.value;
+				student["grade"] = input_3.value;
+				student["age"] = input_4.value;
+				student["degree"] = input_5.value;
+
+				input_1.value = "";
+				input_2.value = "";
+				input_3.value = "";
+				input_4.value = "";
+				input_5.value = "";
+				document.getElementById("button").innerText = "Add Student";
+			};
+		}
+	});
+	renderData(students);
+}
+
+function del(id) {
+	students.forEach((student, index) => {
+		if (student["ID"] == id) {
+			console.log(id);
+			students.splice(index, 1);
+			renderData(students);
+		}
+	});
+}
